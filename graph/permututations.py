@@ -18,14 +18,15 @@
 def permutuations(array):
 	res = []
 	def reccurr(curr):
+		print(curr)
 		if len(curr) == len(array):
-			res.append(curr)
+			res.append(curr.copy())
 			return
 		for val in array:
 			if val not in curr:
 				curr.append(val)
 				reccurr(curr)
-				curr.pop()		
+				curr.pop()	
 	reccurr([])
 	return res
 
