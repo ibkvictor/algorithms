@@ -1,0 +1,17 @@
+# see coin change for similar solution
+import math
+def solution(array,value, ammount):
+    table = {0:0}
+    def recur(ammount):
+        if ammount in table:
+            return table[ammount]
+        v = -math.inf
+        for i in range(len(array)):
+            if array[i] <= ammount:
+                v = max(v, recur(ammount - array[i])) + value[i]
+        table[v] = v
+        print(table)
+        return v
+    return recur(ammount)
+
+print(solution([1, 2, 3, 4, 5, 6, 7], [1, 10, 13, 18, 10, 31, 32], 7))
